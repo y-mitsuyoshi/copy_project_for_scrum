@@ -237,6 +237,9 @@ async function changeStatusCopyedIssue(itemId, singleSelectOptionId) {
   return res;
 }
 for (var item of items) {
+  if (item['type'] !== 'ISSUE') {
+    continue;
+  }
   if (item.status.name !== 'Done') {
     var copyedIssue = await addIsuueInNewProject(item.content.id);
     var singleSelectOptionId = null;
